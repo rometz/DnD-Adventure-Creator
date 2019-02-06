@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
-  # get auth/twitch/callback', to: 'sessions#create'
+  get '/auth/twitch/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 end
