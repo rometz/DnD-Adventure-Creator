@@ -11,4 +11,22 @@
         </div>
     <% end %>
 
+    <div class="field<%= 'field_with_errors' if @user.errors[:name].any? %>">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %><br><br>
+    </div>
+
+    <div class="field<%= 'field_with_errors' if @user.errors[:email].any? %>">
+        <%= f.label :email %><br>
+        <%= f.text_field :email %><br><br>
+    </div>
+
+    <div class="field<%= 'field_with_errors' if @user.errors[:password].any? %>">
+        <%= f.label :password %><br>
+        <%= f.text_field :password %><br><br>
+    </div>
+
+    <%= f.submit 'Create User' %>
+
+    <p><%= link_to('Log in with Twitch', '/auth/twitch/') %></p>
 <% end %>
