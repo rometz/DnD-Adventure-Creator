@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   get '/auth/twitch/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :users
+  resources :users do
+    resources :quests
+  end
 end
