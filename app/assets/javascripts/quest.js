@@ -7,6 +7,7 @@ class Quest {
     };
 }
 
+// getQuests renders for the index page 
 function getQuests(questsCallback) {
     $.ajax({
         url: '/api/quests',
@@ -25,6 +26,18 @@ function getQuests(questsCallback) {
     });
 }
 
+// getQuest will execute when information regarding a single quest is desired
 function getQuest(questId, questCallback) {
+    $.ajax({
+        url: '/api/quests',
+        method: 'get',
+        dataType: 'json'
+    }).done(function(response){
+        console.log('response: ', response);
 
+        quest = new Quest(response.name, response.description, response.id);
+
+        console.log("Here is the quest you were looking for:", quest);
+        questCallback(quest);
+    });
 }
