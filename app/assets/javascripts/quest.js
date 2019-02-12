@@ -41,3 +41,11 @@ function getQuest(questId, questCallback) {
         questCallback(quest);
     });
 }
+
+//////////// AJAX prototype functions ///////////////////
+
+// For appending quests to the index page //
+// Needed for getQuests request //
+Quest.prototype.showQuestSummary = function() {
+    return '<h4><a href= "/quests/'+this.id+'">'+this.name+'</a></h3>';
+}

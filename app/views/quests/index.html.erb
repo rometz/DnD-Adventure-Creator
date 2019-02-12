@@ -1,5 +1,15 @@
 <h1>Quests</h1>
 
-<!-- create JS framework for loading quests as an AJAX -->
+<!-- Use AJAX script for loading all quests for user -->
+
+<script type="text/javascript">
+    getQuests(function(quests) {
+        let appendQuest = '';
+        quests.forEach(function(quest) {
+            appendQuest += quest.showQuestSummary();
+        });
+        $('#quests').html(appendQuest);
+    });
+</script>
 
 <p><%= link_to 'Create a Quest', new_user_quest_path %>
