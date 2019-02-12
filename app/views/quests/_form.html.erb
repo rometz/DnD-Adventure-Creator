@@ -1,0 +1,27 @@
+<h1>Quests</h1>
+<%= form_for @quest do |f| %>
+    <% if @quest.errors.any? %>
+        <div id="error_details">
+            <p>Note the following errors:</p>
+            <ul>
+                <% @quest.errors.full_messages.each do |m| %>
+                    <li><%= m %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field<%= ' field_with_errors' if @quest.errors[:name].any? %>">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %><br><br>
+    </div>
+
+    <div class="field<%= ' field_with_errors' if @quest.errors[:description].any? %>">
+        <%= f.label :description %><br>
+        <%= f.text_field :description %><br><br>
+    </div>
+
+    <%= f.submit %>
+<% end %>
+
+<!-- Add JS framework for AJAX >
