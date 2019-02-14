@@ -42,7 +42,7 @@ function getQuest(questId, questCallback) {
     });
 }
 
-//////////// AJAX prototype functions ///////////////////
+/////////////////// AJAX prototype functions ///////////////////
 
 // For appending quests to the index page //
 // Needed for getQuests request //

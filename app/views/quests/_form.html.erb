@@ -24,4 +24,29 @@
     <%= f.submit %>
 <% end %>
 
-<!-- Add JS framework for AJAX >
+<!-- Add JS framework for AJAX -->
+
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+        $('form').submit(function(event) {
+            console.log("submit");
+            event.preventDefault();
+            
+            var values = $(this).serialize();
+
+            var posting = $.ajax({
+                url: '/quests/<%=@id%>',
+                method: 'patch',
+                data: values
+            });
+
+            posting.done(function(data) {
+                let quest = data;
+                $('#name').val(quest['name']);
+                $('#description').val(quest['description']);
+
+                window.location = '/quests/<%=@id%>';
+            });
+        });
+    });
+</script>
