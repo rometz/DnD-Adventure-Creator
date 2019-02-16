@@ -7,4 +7,7 @@ class Event < ApplicationRecord
 
     validates :name, presence: true
     validates :description, presence: true
+
+    # search method ActiveRecord
+        # sort by event 'nodes'
 end

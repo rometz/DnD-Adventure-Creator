@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 2019_02_16_031935) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.boolean "combat", default: false
+    t.boolean "social", default: false
+    t.boolean "search", default: false
     t.integer "quest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

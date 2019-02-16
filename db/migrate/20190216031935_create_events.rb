@@ -3,6 +3,9 @@ class CreateEvents < ActiveRecord::Migration[5.2]
     create_table :events do |t|
       t.string :name
       t.text :description
+      t.boolean :combat, default: false
+      t.boolean :social, default: false
+      t.boolean :search, default: false
       t.integer :quest_id
 
       t.timestamps
