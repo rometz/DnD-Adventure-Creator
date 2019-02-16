@@ -20,19 +20,28 @@ class EventsController < ApplicationController
         @event = Event.new(event_params)
         @quest = Quest.find_by(id: params[:event][:quest_id])
         if @event.save
-            redirect_ti events_path(@quest, :quest_id => params[:event][:quest_id])
+            redirect_to events_path(@quest, :quest_id => params[:event][:quest_id])
         else
             render 'new'
         end
     end
 
     def edit
+        @event = Event.find_by(id: params[:id])
+        redirect_to events_path(@quest, :quest_id => params[:event][:quest_id])
     end
 
     def update
+        @event = Event.find_by(id: params[:id])
+        @event.update(event_params)
+        redirect_to events_path(@quest, :quest_id => params[:event][:quest_id])
     end
 
     def destroy
+        @event = Event.find_by(id: params[:id])
+        quest_id = @event.quest_id
+        @event.destroy
+        redirect_to events_path(:quest_id => quest_id)
     end
 
     private
