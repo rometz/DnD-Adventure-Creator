@@ -1,5 +1,14 @@
 <p>Name: <%= @event.name %></p>
 <p>Description <%= @event.description %></p>
 <% if @event.combat == true ? <p>Yes</p> : <p>No</p> %>
+<!-- Add AJAX for loading existing combat objects -->
+<!-- <p><%= link_to "Add Combat to Event", <<path>> %></p> -->
+
 <% if @event.social == true ? <p>Yes</p> : <p>No</p> %>
-<% if @event.social == true ? <p>Yes</p> : <p>No</p> %>
+<!-- Add AJAX for loading existing social objects -->
+<!-- <p><%= link_to "Add Social to Event", <<path>> %></p> -->
+
+<% if @event.search == true ? <p>Yes</p> : <p>No</p> %>
+<!-- Add AJAX for loading existing search objects -->
+<!-- <p><%= link_to "Add Search to Event", <<path>> %></p> -->
+
