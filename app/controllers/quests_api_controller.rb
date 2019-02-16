@@ -11,9 +11,12 @@ class QuestsApiController < ApplicationController
     end
 
     def new
+        quest = Quest.new
     end
 
     def create
+        quest = Quest.create
+        render json: budget, status: 201
     end
 
     private
