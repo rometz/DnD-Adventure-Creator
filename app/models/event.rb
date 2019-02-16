@@ -1,8 +1,9 @@
-class Quest < ApplicationRecord
+class Event < ApplicationRecord
+    belongs_to :quest
+
     # future relationships:
-    has_many :events
-        # has_many :npcs
-    belongs_to :user
+        # npcs
+        # monsters
 
     validates :name, presence: true
     validates :description, presence: true
