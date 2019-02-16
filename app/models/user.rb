@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
     has_many :quests
     # future relationships:
+    # has_many :adventures
     has_many :events, through: :quests
 
     validates :name, presence: true
