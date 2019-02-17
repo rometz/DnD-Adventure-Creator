@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     resources :quests
   end
 
-  resources :events
+  resources :quests do
+    resources :events
+  end
 end

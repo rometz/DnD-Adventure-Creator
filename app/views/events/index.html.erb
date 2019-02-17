@@ -1,0 +1,15 @@
+<h3>Events for <%= @quest.name %>:</h3>
+
+<!-- Put this in a helper? -->
+<% @events.each do |e| %>
+    <ul>
+        <li><%= e.name %></li>
+        <li><%= e.description %></li>
+        <%= if e.combat == true ? <li>Combat</li> : <li>Non-Combat</li> %>
+        <%= if e.social == true ? <li>Social</li> : <li>Not Social</li> %>
+        <%= if e.search == true ? <li>Search</li> : <li>Not a Search</li> %>
+    </ul>
+<% end %>
+
+<p><%= link_to "Add Event", new_quest_event_path(@quest) %></p>
+<p><%= link_to "Back to #{@quest.name}", quest_path(@quest.id) %></p>
