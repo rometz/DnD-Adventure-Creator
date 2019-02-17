@@ -1,0 +1,42 @@
+<%= form_for @transaction do |f| %>
+
+    <% if @event.errors.any? %>
+        <div id="error_detail">
+            <p>Note the following errors:</p>
+            <ul>
+                <% @event.errors.full_messages.each do |m| %>
+                    <li><%= m %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field<%= ' field_with_errors' if @event.errors[:name].any? %>">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %><br><br>
+    </div>
+
+    <div class="field<%= ' field_with_errors' if @event.errors[:description].any? %>">
+        <%= f.label :description %><br>
+        <%= f.text_field :description %><br><br>
+    </div>
+
+    <div class="field<%= ' field_with_errors' if @event.errors[:combat].any? %>">
+        <%= f.label :combat %><br>
+        <%= f.check_box :combat %><br><br>
+    </div>
+
+    <div class="field<%= ' field_with_errors' if @event.errors[:social].any? %>">
+        <%= f.label :social %><br>
+        <%= f.check_box :social %><br><br>
+    </div>
+
+    <div class="field<%= ' field_with_errors' if @event.errors[:search].any? %>">
+        <%= f.label :search %><br>
+        <%= f.check_box :search %><br><br>
+    </div>
+
+    <%= f.hidden_field :quest_id %>
+
+    <%= f.submit %>
+<% end %>
