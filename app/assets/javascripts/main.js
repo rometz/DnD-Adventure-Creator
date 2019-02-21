@@ -23,6 +23,7 @@ jQuery(document).ready(function( $ ) {
       $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
       return false;
     });
+})
 /*  
     // Initiate the wowjs animation library
     new WOW().init();
@@ -134,4 +135,4 @@ jQuery(document).ready(function( $ ) {
   // custom code
   
   });
-  */
+*/

@@ -833,7 +833,7 @@ body.mobile-nav-active #mobile-nav-toggle i {
   }
 }
 
-@-webkit-keyframes pulsate2 {
+@keyframes pulsate2 {
   0% {
     -webkit-transform: scale(0.1, 0.1);
     transform: scale(0.1, 0.1);
