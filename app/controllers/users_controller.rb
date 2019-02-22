@@ -22,7 +22,11 @@ class UsersController < ApplicationController
             @user = User.find_by(id: params[:id])
             @quests = Quest.find_by(user_id: @user.id)
             # for future purposes, this will be placed in the model and will allow use of a dropdown menu to select the quests' events you want to look at
-            @quest = @quests[0]
+            if @quests == nil
+                @quest = 0
+            else
+                @quest = @quests.last
+            end
         else
             redirect_to root_url
         end
