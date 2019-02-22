@@ -20,6 +20,9 @@ class UsersController < ApplicationController
     def show
         if logged_in?
             @user = User.find_by(id: params[:id])
+            @quests = Quest.find_by(user_id: @user.id)
+            # for future purposes, this will be placed in the model and will allow use of a dropdown menu to select the quests' events you want to look at
+            @quest = @quests[0]
         else
             redirect_to root_url
         end

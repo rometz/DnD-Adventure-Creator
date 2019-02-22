@@ -52,8 +52,10 @@
         
         <div class="navbar-collapse collapse">
           <ul class="nav nabvar-nav">
-            <li><%= link_to "Sign Up", new_user_path %></li>
-            <li><%= link_to "Sign In", signin_path %></li>
+            <% if !logged_in? %>
+              <li><%= link_to "Sign Up", new_user_path %></li>
+              <li><%= link_to "Sign In", signin_path %></li>
+            <% end %>
             <li><%= if logged_in?
                   link_to "User Home", user_path(current_user)
                   end %></li>

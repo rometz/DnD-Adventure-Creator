@@ -2,8 +2,13 @@ class EventsController < ApplicationController
     before_action :logged_in?
 
     def index
-        @events = Event.where(quest_id: params[:quest_id])
-        @quest = Quest.find_by(id: params[:quest_id])
+        if params[:quest_id] == nil
+            @events = Event.all
+            render 'index'
+        else
+            @events = Event.where(quest_id: params[:quest_id])
+            @quest = Quest.find_by(id: params[:quest_id])
+        end
     end
 
     def show
