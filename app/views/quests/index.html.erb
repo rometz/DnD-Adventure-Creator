@@ -12,4 +12,4 @@
     });
 </script>
 
-<p><%= link_to 'Create a Quest', new_user_quest_path %>
+<p><%= link_to 'Create a Quest', new_user_quest_path(user_id:  :params[@user.id]) %>
