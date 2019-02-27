@@ -1,4 +1,4 @@
 <p>Welcome <%= @user.name %></p>
 
 <p><%= link_to 'See Quests', quests_path(@user) %></p>
-<p><%= link_to 'See Events', quest_events_path(@quest) %>
+<p><%= link_to 'See Events', quest_events_path(@quest.id) %>

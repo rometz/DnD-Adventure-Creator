@@ -29,14 +29,14 @@
 <script type="text/javascript" charset="utf-8">
     $(function() {
         $('form').submit(function(event) {
-            console.log("submit");
+            console.log(window, "submit");
             event.preventDefault();
             
             var values = $(this).serialize();
 
             var posting = $.ajax({
                 url: '/quests/<%=@id%>',
-                method: 'patch',
+                method: 'post',
                 data: values
             });
 

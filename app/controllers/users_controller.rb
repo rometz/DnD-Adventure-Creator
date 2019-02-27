@@ -20,12 +20,16 @@ class UsersController < ApplicationController
     def show
         if logged_in?
             @user = User.find_by(id: params[:id])
-            @quests = Quest.find_by(user_id: @user.id)
+            @quests = []
+            Quest.where(user_id: @user.id).find_each do |quest|
+                @quests << quest
+            end
+           # byebug
             # for future purposes, this will be placed in the model and will allow use of a dropdown menu to select the quests' events you want to look at
             if @quests == nil
                 @quest = 0
             else
-                @quest = @quests.last
+                @quest = @quests[0]
             end
         else
             redirect_to root_url

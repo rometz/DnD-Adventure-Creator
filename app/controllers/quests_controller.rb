@@ -2,7 +2,7 @@ class QuestsController < ApplicationController
     before_action :logged_in?
 
     def index
-        @user = User.find_by(id: current_user.id)aa
+        @user = User.find_by(id: current_user.id)
     end
 
     def show

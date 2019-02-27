@@ -7,7 +7,7 @@ class QuestsApiController < ApplicationController
 
     def show
         quest = Quest.find_by(id: params[:id])
-        render json: quest.to_json(:methods => <<input method not yet created>> )
+        render json: quest #.to_json(:methods => <<input method not yet created>> )
     end
 
     def new

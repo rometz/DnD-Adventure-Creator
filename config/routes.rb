@@ -15,4 +15,12 @@ Rails.application.routes.draw do
   resources :quests do
     resources :events
   end
+
+  get '/api/quests' => 'quests_api#index'
+  get '/api/quests' => 'quests_api#new'
+  post '/api/quests' => 'quests_api#create'
+  get '/api/quest/:id' => 'quests_api#show'
+  patch '/api/quest/:id' => 'quests_api#update'
+
+  get '/api/quest/:quest_id/events' => 'events_api#index'
 end
