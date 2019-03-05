@@ -1,8 +1,12 @@
 <h1>Quests</h1>
 
-<!-- Use AJAX script for loading all quests for user -->
+<p><%= link_to 'Create a Quest', new_user_quest_path(user_id:  :params[@user.id]) %></p>
+
+<div id="quests">
+</div>
 
 <script type="text/javascript">
+
     getQuests(function(quests) {
         let appendQuest = '';
         quests.forEach(function(quest) {
@@ -12,4 +16,4 @@
     });
 </script>
 
-<p><%= link_to 'Create a Quest', new_user_quest_path(user_id:  :params[@user.id]) %>
+

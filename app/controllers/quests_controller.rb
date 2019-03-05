@@ -3,6 +3,7 @@ class QuestsController < ApplicationController
 
     def index
         @user = User.find_by(id: current_user.id)
+        @quests = Quest.find_by(id: @user.id)
     end
 
     def show
@@ -19,6 +20,7 @@ class QuestsController < ApplicationController
     def create
         @quest = Quest.new(quests_params)
         @quest.user_id = current_user.id if current_user
+     #   byebug
         if @quest.save
             redirect_to quests_path(@quest)
         else

@@ -25,7 +25,7 @@
 <% end %>
 
 <!-- AJAX for editing -->
-
+<!--
 <script type="text/javascript" charset="utf-8">
     $(function() {
         $('form').submit(function(event) {
@@ -36,7 +36,7 @@
 
             var posting = $.ajax({
                 url: '/quests/<%=@id%>',
-                method: 'post',
+                method: 'patch',
                 data: values
             });
 
@@ -50,3 +50,4 @@
         });
     });
 </script>
+-->
