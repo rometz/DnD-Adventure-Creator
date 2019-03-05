@@ -20,7 +20,6 @@ class QuestsController < ApplicationController
     def create
         @quest = Quest.new(quests_params)
         @quest.user_id = current_user.id if current_user
-     #   byebug
         if @quest.save
             redirect_to quests_path(@quest)
         else
