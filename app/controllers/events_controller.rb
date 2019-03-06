@@ -17,12 +17,14 @@ class EventsController < ApplicationController
     end
 
     def new
+    #    byebug
         @event = Event.new
         @quest = Quest.find_by(id: params[:quest_id])
+      #  byebug
     end
 
     def create
-        @event = Event.new(event_params)
+        @event = Event.new(events_params)
         @quest = Quest.find_by(id: params[:event][:quest_id])
         if @event.save
             redirect_to events_path(@quest, :quest_id => params[:event][:quest_id])

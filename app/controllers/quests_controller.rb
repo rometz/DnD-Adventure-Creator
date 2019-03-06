@@ -11,6 +11,7 @@ class QuestsController < ApplicationController
         @id = params[:id]
 
         @quest = Quest.find_by(id: params[:id])
+       # byebug
     end
     
     def new
