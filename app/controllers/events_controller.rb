@@ -12,22 +12,24 @@ class EventsController < ApplicationController
     end
 
     def show
+       # byebug
         @event = Event.find_by(id: params[:id])
-        @quest = Quest.find_by(id: params[:budget_id])
+        @quest = Quest.find_by(id: params[:quest_id])
     end
 
     def new
-    #    byebug
         @event = Event.new
         @quest = Quest.find_by(id: params[:quest_id])
-      #  byebug
     end
 
     def create
+
         @event = Event.new(events_params)
-        @quest = Quest.find_by(id: params[:event][:quest_id])
+        @quest = Quest.find_by(id: params[:quest_id])
+        @event.quest_id = @quest.id
+
         if @event.save
-            redirect_to events_path(@quest, :quest_id => params[:event][:quest_id])
+            redirect_to quest_event_path(@quest, @event)
         else
             render 'new'
         end
@@ -54,6 +56,6 @@ class EventsController < ApplicationController
     private
 
     def events_params
-        params.require(:events).permit(:name, :description, :combat, :social, :search, :quest_id)
+        params.require(:event).permit(:name, :description, :combat, :social, :search, :quest_id)
     end
 end
