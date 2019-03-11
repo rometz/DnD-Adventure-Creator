@@ -1,15 +1,40 @@
-<h3>Events for <%= @quest.name %>:</h3>
+<div class="container">
+    <% @events.each do |e| %>
+        <% quest = find_quest(e) %> 
+        <div class="d-inline-flex align-content-start flex-wrap">
+            <ul>
+                <li>Name: <%= e.name %></li>
+                <li>Name: <%= link_to "#{e.name}", quest_event_path(quest.id, e.id) %></li>
+                <li>Quest: <%= link_to "#{quest.name}", quest_path(quest) %></li>
+                <%# need quest and event object ids %>
+                <%# how do we make this condense? %>
+                <%# e.quest.name <%= link_to 'e.quest.name', @e.quest.name %>
+                <li>Description: <%= e.description %></li>
+                <li>Combat?
+                    <% if e.combat? %>
+                        <p>Yes</p>
+                    <% else %>
+                        <p>No</p>
+                    <% end %>
+                </li>
+                <li>Social?
+                    <% if e.social? %>
+                        <p>Yes</p>
+                    <% else %>
+                        <p>No</p>
+                    <% end %>
+                </li>
+                <li>Search?
+                    <% if e.search? %>
+                        <p>Yes</p>
+                    <% else %>
+                        <p>No</p>
+                    <% end %>
+                </li>
+            </ul>
+        </div>
+    <% end %>
+</div>
 
-<!-- Put this in a helper? -->
-<% @events.each do |e| %>
-    <ul>
-        <li><%= e.name %></li>
-        <li><%= e.description %></li>
-        <%= if e.combat == true ? <li>Combat</li> : <li>Non-Combat</li> %>
-        <%= if e.social == true ? <li>Social</li> : <li>Not Social</li> %>
-        <%= if e.search == true ? <li>Search</li> : <li>Not a Search</li> %>
-    </ul>
-<% end %>
-
-<p><%= link_to "Add Event", new_quest_event_path(@quest) %></p>
-<p><%= link_to "Back to #{@quest.name}", quest_path(@quest.id) %></p>
+<p><%#<%= link_to "Add Event", new_quest_event_path(@quest) %></p>
+<p><%#<%= link_to "Back to #{@quest.name}", quest_path(@quest.id) %></p>

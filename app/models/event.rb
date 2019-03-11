@@ -15,4 +15,8 @@ class Event < ApplicationRecord
     # search method ActiveRecord
         # sort by event 'nodes'
         # how many booleans are true?
+    
+    def find_quest(event) 
+        @event = Quest.find_by(id: event.id)
+    end
 end

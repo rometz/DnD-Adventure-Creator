@@ -1,9 +1,16 @@
 class EventsController < ApplicationController
     before_action :logged_in?
+    include EventsHelper
 
     def index
         if params[:quest_id] == nil
             @events = Event.all
+            @quests = []
+            @events.each do |e|
+                quest = Quest.find_by(id: e.id)
+                @quests << quest
+                # we have all the quests here
+            end
             render 'index'
         else
             @events = Event.where(quest_id: params[:quest_id])
