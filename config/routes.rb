@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
 
   get '/events/index' => 'events#index'
+  get '/events/new_quest_event' => 'events#new_quest_event'
+  post '/events/new_quest_event' => 'events#create'
 
   get '/api/quests' => 'quests_api#index'
   get '/api/quests' => 'quests_api#new'

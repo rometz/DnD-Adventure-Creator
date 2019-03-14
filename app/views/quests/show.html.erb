@@ -1,5 +1,26 @@
 <h3>Quest: <%= @quest.name %></h3>
 <h5>Description:</h5>
 <p><%= @quest.description %></p>
+<div class="container">
+    <% @events.each do |e| %>
+        <div class="d-inline-flex align-content-start flex-wrap" id="jsproto">
+            <ul>
+                <li>Event: <%= link_to "#{e.name}", quest_event_path(@quest.id, e.id) %></li>
+            </ul>
+        </div>
+    <% end %>
+</div>
 
+<button id="new-quest-event-button" data-url="/events/new_quest_event">Add Another Event</button>
+<br>
 <p><%= link_to "Add an Event to '#{@quest.name}'", new_quest_event_path(@quest.id) %></p>
+
+<script type="text/javascript">
+    (function(quests) {
+        let appendQuest = '';
+        quests.forEach(function(quest) {
+            appendQuest += quest.showQuestSummary();
+        });
+        $('#quests').html(appendQuest);
+    });
+</script>

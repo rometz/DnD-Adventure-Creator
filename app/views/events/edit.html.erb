@@ -1,1 +1,7 @@
-<%= render 'form' %>
+<h3>Edit <%= @event.name %> </h3>
+
+<%= form_for @event, url: { :action => "update" } do |f| %>
+
+    <%= render 'events/form', f: f %>
+
+<% end %>

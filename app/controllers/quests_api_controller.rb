@@ -16,7 +16,7 @@ class QuestsApiController < ApplicationController
 
     def create
         quest = Quest.create
-        render json: budget, status: 201
+        render json: quest, status: 201
     end
 
     private

@@ -11,7 +11,10 @@ class QuestsController < ApplicationController
         @id = params[:id]
 
         @quest = Quest.find_by(id: params[:id])
-       # byebug
+        @events = []
+        Event.where("quest_id = #{@quest.id}").find_each do |e|
+            @events << e
+        end
     end
     
     def new

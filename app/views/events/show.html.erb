@@ -1,20 +1,30 @@
 <p>Name: <%= @event.name %></p>
-<p>Description <%= @event.description %></p>
+<p>Description: <%= @event.description %></p>
+<p>Combat? <br>
+    <% if @event.combat? %>
+        <p>Yes</p>
+    <% else %>
+        <p>No</p>
+    <% end %>
+</p>
 
-<% if @event.combat? %>
+<p>Social? <br>
+    <% if @event.social? %>
+        <p>Yes</p>
+    <% else %>
+        <p>No</p>
+    <% end %>
+</p>
+
+<p>Search?
+    <% if @event.search? %>
     <p>Yes</p>
-<% else %>
-    <p>No</p>
-<% end %>
+    <% else %>
+        <p>No</p>
+    <% end %>
+</p>
 
-<% if @event.social? %>
-    <p>Yes</p>
-<% else %>
-    <p>No</p>
-<% end %>
-
-<% if @event.search? %>
-   <p>Yes</p>
-<% else %>
-    <p>No</p>
-<% end %>
+<p><%= link_to "Back to '#{@quest.name}'", quest_path(@quest) %></p>
+<p><%= link_to "All Events", events_index_path %></p>
+<p><%= link_to "Edit '#{@event.name}'", edit_quest_event_path(@event) %></p>
+<p><%= link_to "Delete '#{@event.name}'", quest_event_path(@event), :method => :delete %></p>

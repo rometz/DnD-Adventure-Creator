@@ -1,0 +1,30 @@
+<div class="added-event">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %><br>
+    </div>
+
+    <div class="added-event">
+        <%= f.label :description %><br>
+        <%= f.text_field :description %><br>
+    </div>
+
+    <div class="added-event">
+        <%= f.label :combat %><br>
+        <%= f.check_box :combat %><br>
+    </div>
+
+    <div class="added-event">
+        <%= f.label :social %><br>
+        <%= f.check_box :social %><br>
+    </div>
+
+    <div class="added-event">
+        <%= f.label :search %><br>
+        <%= f.check_box :search %><br>
+    </div>
+
+    <%= f.hidden_field :quest_id %>
+
+    <div class="added-event-submit">
+        <%= f.submit %>
+    </div>
