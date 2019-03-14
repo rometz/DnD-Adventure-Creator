@@ -66,7 +66,7 @@ $("#new_event").submit(function(e) {
 
     $.ajax({
         type: "POST",
-        url: url,
+        url: "/events/create",
         data: form.serialize(),
     });
 })
