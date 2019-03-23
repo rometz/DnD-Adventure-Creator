@@ -11,9 +11,11 @@
     <% end %>
 </div>
 
-<button id="new-quest-event-button" data-url="/events/new_quest_event">Add Another Event</button>
+
+
+<!-- <button id="new-quest-event-button" data-url="/events/new_quest_event">Add Another Event</button> -->
 <br>
-<p><%= link_to "Add an Event to '#{@quest.name}'", new_quest_event_path(@quest.id) %></p>
+<p id="new-quest-event-button" data-url="/quests/<%=@quest.id%>/events/new_quest_event" data-params="<%= @quest.id %>"><%= link_to "Add an Event to '#{@quest.name}'", getevent_path(@quest, @event) %></p>
 
 <script type="text/javascript">
     (function(quests) {

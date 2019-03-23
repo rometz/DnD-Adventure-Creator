@@ -44,33 +44,47 @@ function getQuest(questId, questCallback) {
 
 // Generate events#new form for dynamic event creation on quest#show
 $(document).ready(function() {
+  
+    let questId = $("#new-quest-event-button").data("params");
+    console.log(questId);
     $("#new-quest-event-button").click(function(event) {
-        var $button = $(this);
-        
-        var url = $(this).data("url")
-
-        $.get(url, function(response){
-            console.log('response: ', response)
-            $button.before(response)
-        })
-
         event.preventDefault();
-    })
+
+        let $button = $(this);
+        
+        let url = $(this).data("url");
+        console.log(url);
+        console.log(questId);
+
+        $.get(url, questId, function(response){
+            console.log('response: ', response);
+            $button.before(response);
+        });
+
+       // $.post(url, questId, function(response){
+         //   console.log('response: ', response);
+        //});
+
+    });
 });
 
-$("#new_event").submit(function(e) {
+$("#added-event-submit").submit(function(e) {
     e.preventDefault();
-
-    var form = $(this);
-    var url = form.attr('action');
-
+    let form = $(this);
+    console.log(this);
+    let url = form.attr('action');
+    let questId = $("#new-quest-event-button").data("params").value;
+    console.log(questId);
     $.ajax({
         type: "POST",
-        url: "/events/create",
-        data: form.serialize(),
+        url: url,
+        data: form.serialize() + '&' + $.param(questId)
+    // data: {
+    //     questId: questId,
+    //     form: form.serialize()           
+    //\ }
     });
-})
-
+});
 
 // addQuestEvent
 function addQuestEvent(questId, questCallback) {

@@ -12,13 +12,15 @@ Rails.application.routes.draw do
     resources :quests
   end
 
+  get '/quests/:quest_id/events/new_quest_event' => 'events#new_quest_event', as: :getevent
+  post '/quests/:quest_id/events/new_quest_event' => 'events#create'
   resources :quests do
     resources :events
   end
 
   get '/events/index' => 'events#index'
-  get '/events/new_quest_event' => 'events#new_quest_event'
-  post '/events/new_quest_event' => 'events#create'
+  
+ # post '/events/new_quest_event' => 'events#create'
 
   get '/api/quests' => 'quests_api#index'
   get '/api/quests' => 'quests_api#new'

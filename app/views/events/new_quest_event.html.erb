@@ -1,5 +1,9 @@
-<%= form_for @addevent, url: { :action => "new_quest_event" } do |f| %>
+<%= form_for @event, url: { :action => "new_quest_event" } do |f| %>
+ <%#   <%= quest_form.fields_for :event do |f| %>
+        <%= render 'events/fields', f: f %>
+ <%#   <% end %>
 
-    <%= render 'events/fields', f: f %>
-
+    <div id="added-event-submit">
+        <%= f.submit %>
+    </div>
 <% end %>

@@ -11,10 +11,13 @@ class QuestsController < ApplicationController
         @id = params[:id]
 
         @quest = Quest.find_by(id: params[:id])
+        @event = Event.new
         @events = []
         Event.where("quest_id = #{@quest.id}").find_each do |e|
             @events << e
         end
+      #  byebug
+    #    render json: @quest
     end
     
     def new
@@ -32,7 +35,6 @@ class QuestsController < ApplicationController
     end
 
     def edit
-        #for JS framework
         @id = params[:id]
 
         @quest = Quest.find_by(id: params[:id])
@@ -48,6 +50,14 @@ class QuestsController < ApplicationController
         @quest = Quest.find_by(id: params[:id])
         @quest.destroy
         redirect_to quests_path(@quest)
+    end
+
+    def event
+        @event
+    end
+    
+    def events_attributes=(attributes)
+        @event = Event.new(attributes)
     end
 
     private

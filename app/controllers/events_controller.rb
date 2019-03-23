@@ -29,9 +29,8 @@ class EventsController < ApplicationController
     end
 
     def create
-
         @event = Event.new(events_params)
-        @quest = Quest.find_by(id: params[:quest_id])
+        @quest = Quest.find_by(id: params[:quest_id].to_i)
         @event.quest_id = @quest.id
 
         if @event.save
@@ -44,16 +43,12 @@ class EventsController < ApplicationController
     def edit
         @event = Event.find_by(id: params[:id])
         @quest = Quest.find_by(id: @event.quest_id)
-     #   byebug
-       # redirect_to edit_quest_event_path(@event)
     end
 
     def update
         @event = Event.find_by(id: params[:id])
         @event.update(events_params)
         @quest = Quest.find_by(id: @event.quest_id)
-        #### start here 03/12 with same events_params struggle from last week #####
-     #   redirect_to events_path(@quest, :quest_id => params[:event][:quest_id])
         redirect_to quest_event_path(@quest, @event)
     end
 
@@ -65,15 +60,14 @@ class EventsController < ApplicationController
     end
 
     def new_quest_event
-        @addevent = Event.new
-        @addevent.quest_id = params[:quest_id]
+        @event = Event.new
+        @quest = Quest.find_by(id: quest_id)
         render layout: false
-        #byebug
     end
 
     private
 
     def events_params
-        params.require(:event).permit(:name, :description, :combat, :social, :search, :quest_id)
+        params.require(:event).permit(:name, :description, :combat, :social, :search, :quest_id, :questId)
     end
 end
