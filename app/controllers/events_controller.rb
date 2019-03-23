@@ -34,7 +34,7 @@ class EventsController < ApplicationController
         @event.quest_id = @quest.id
 
         if @event.save
-            redirect_to quest_event_path(@quest, @event)
+            redirect_to quest_path(@quest)
         else
             render 'new'
         end
@@ -61,7 +61,6 @@ class EventsController < ApplicationController
 
     def new_quest_event
         @event = Event.new
-        @quest = Quest.find_by(id: quest_id)
         render layout: false
     end
 
