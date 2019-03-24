@@ -1,4 +1,5 @@
 <p>Welcome <%= @user.name %></p>
 
-<p id="render-quests"><%= link_to 'See Quests', quests_path(@user) %></p>
-<p id="render-events"><%= link_to 'See Events', events_index_path  %>
+<p><%= link_to 'See Quests', quests_path(@user) %></p>
+<p><%= link_to 'See Events', events_index_path  %></p>
+<p id="user-render-events">See your events?</p>
