@@ -24,8 +24,7 @@ class UsersController < ApplicationController
             Quest.where(user_id: @user.id).find_each do |quest|
                 @quests << quest
             end
-           # byebug
-            # for future purposes, this will be placed in the model and will allow use of a dropdown menu to select the quests' events you want to look at
+            
             if @quests == nil
                 @quest = 0
             else

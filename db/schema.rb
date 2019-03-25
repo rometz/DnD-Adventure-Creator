@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 2019_02_16_031935) do
     t.boolean "social", default: false
     t.boolean "search", default: false
     t.integer "quest_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "quests", force: :cascade do |t|

@@ -14,18 +14,8 @@ class User < ApplicationRecord
     # has_many events
     def user_events_call
         if logged_in?
-            @user = User.find_by(id: params[:id])
-
-            @quests = []
-            @quest_id = @quests[0].id
-            Quest.where(user_id: @user.id).find_each do |quest|
-                @quests << quest
-            end
-
-            @events = []
-            Event.where(quest_id: @quest_id).find_each do |e|
-                @events << e
-            end
+            @user = current_user.id
+            @events = @user.events
         end
     end
 end

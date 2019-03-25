@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
     belongs_to :quest
+    belongs_to :user
 
     # future relationships:
         # npcs
