@@ -32,7 +32,7 @@ class EventsController < ApplicationController
         @event = Event.new(events_params)
         @quest = Quest.find_by(id: params[:quest_id].to_i)
         @event.quest_id = @quest.id
-
+        @event.user_id = current_user.id
         if @event.save
             redirect_to quest_path(@quest)
         else

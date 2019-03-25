@@ -45,8 +45,8 @@ function getQuest(questId, questCallback) {
 // Generate events#new form for dynamic event creation on quest#show
 $(document).ready(function() {
   
-    let questId = $("#new-quest-event-button").data("params");
-    console.log(questId);
+    //let questId = $("#new-quest-event-button").data("params");
+   // console.log(questId);
     $("#new-quest-event-button").click(function(event) {
         event.preventDefault();
 
@@ -54,9 +54,9 @@ $(document).ready(function() {
         
         let url = $(this).data("url");
         console.log(url);
-        console.log(questId);
+       // console.log(questId);
 
-        $.get(url, questId, function(response){
+        $.get(url, function(response){
             console.log('response: ', response);
             $button.before(response);
         });
@@ -73,16 +73,12 @@ $("#added-event-submit").submit(function(e) {
     let form = $(this);
     console.log(this);
     let url = form.attr('action');
-    let questId = $("#new-quest-event-button").data("params").value;
-    console.log(questId);
+   // let questId = $("#new-quest-event-button").data("params").value;
+   // console.log(questId);
     $.ajax({
         type: "POST",
         url: url,
-        data: form.serialize() + '&' + $.param(questId)
-    // data: {
-    //     questId: questId,
-    //     form: form.serialize()           
-    //\ }
+        data: form.serialize()
     });
 });
 
