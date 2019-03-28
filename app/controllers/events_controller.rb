@@ -9,7 +9,6 @@ class EventsController < ApplicationController
             @events.each do |e|
                 quest = Quest.find_by(id: e.id)
                 @quests << quest
-                # we have all the quests here
             end
             render 'index'
         else

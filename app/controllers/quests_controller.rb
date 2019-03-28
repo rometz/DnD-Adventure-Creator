@@ -7,7 +7,6 @@ class QuestsController < ApplicationController
     end
 
     def show
-        # for JS framework
         @id = params[:id]
 
         @quest = Quest.find_by(id: params[:id])
@@ -18,6 +17,7 @@ class QuestsController < ApplicationController
         end
       #  byebug
     #    render json: @quest
+    #    used together with undeveloped method mentioned in quest.js
     end
     
     def new
