@@ -1,3 +1,5 @@
 <h1 align='center'>Two Taverns</h1>
 
-<%= link_to('Log in with Twitch', '/auth/twitch/') %>
+<% if !logged_in? %>
+    <%= link_to('Log in with Twitch', '/auth/twitch/') %>
+<% end %>
