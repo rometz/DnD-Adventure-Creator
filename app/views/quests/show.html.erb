@@ -17,6 +17,10 @@
 <br>
 <p id="new-quest-event-button" data-url="/quests/<%=@quest.id%>/events/new_quest_event" data-params="<%= @quest.id %>"><%= link_to "Add an Event to '#{@quest.name}'", getevent_path(@quest, @event) %></p>
 
+<!-- use an onClick JS function to render the layout within quests#show? questions... -->
+<!-- use render partial: "events/fields", locals: {quest: @quest} ????? -->
+<!-- use jQuery .load() ??? i'm thinking this one. -->
+
 <script type="text/javascript">
     (function(quests) {
         let appendQuest = '';

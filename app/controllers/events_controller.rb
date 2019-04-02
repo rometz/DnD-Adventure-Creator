@@ -3,11 +3,12 @@ class EventsController < ApplicationController
     include EventsHelper
 
     def index
+        @user = User.find_by(id: current_user.id)
         if params[:quest_id] == nil
-            @events = Event.all
+            @events = Event.where(user_id: @user.id)
             @quests = []
             @events.each do |e|
-                quest = Quest.find_by(id: e.id)
+                quest = Quest.where(id: e.quest_id, user_id: @user.id)
                 @quests << quest
             end
             render 'index'
