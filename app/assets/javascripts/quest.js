@@ -44,19 +44,22 @@ function getQuest(questId, questCallback) {
 
 // Generate events#new form for dynamic event creation on quest#show
 $(document).ready(function() {
-
-    $("#new-quest-event-button").click(function(event) {
+    let questId = $('#event-form').data("quest-id");
+    $(".event-add").click(function(event) {
         event.preventDefault();
 
         let $button = $(this);
-        
-        let url = $(this).data("url");
-        console.log(url);
 
+       // let $eventDiv = $('.event-div');
+        let url = $(this).data("url");
+        //console.log($eventDiv);
+        /*
         $.get(url, function(response){
             console.log('response: ', response);
             $button.before(response);
         });
+        */
+        $('#event-form').load(`/quests/${questId}/events/new_quest_event #event-div`);       
     });
 });
 

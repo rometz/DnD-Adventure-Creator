@@ -11,12 +11,15 @@
     <% end %>
 </div>
 
-
-
-<!-- <button id="new-quest-event-button" data-url="/events/new_quest_event">Add Another Event</button> -->
+<div id="event-form" data-quest-id="<%=@quest.id%>"></div>
 <br>
-<p id="new-quest-event-button" data-url="/quests/<%=@quest.id%>/events/new_quest_event" data-params="<%= @quest.id %>"><%= link_to "Add an Event to '#{@quest.name}'", getevent_path(@quest, @event) %></p>
+<%= button_to "Test", { method: :get,  form_class: "event-add", params: [@quest, @event], id: @quest.id }, "/quests/#{ @quest.id }/events/new_quest_event"  do %>
+    Add Event to <%= @quest.name %> 
+<% end %>
 
+<!--
+<p id="new-quest-event-button" data-url="/quests/<%=@quest.id%>/events/new_quest_event" data-params="<%= @quest.id %>"><%= link_to "Add an Event to '#{@quest.name}'", getevent_path(@quest, @event) %></p>
+-->
 <!-- use an onClick JS function to render the layout within quests#show? questions... -->
 <!-- use render partial: "events/fields", locals: {quest: @quest} ????? -->
 <!-- use jQuery .load() ??? i'm thinking this one. -->

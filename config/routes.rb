@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get '/quests/:quest_id/events/new_quest_event' => 'events#new_quest_event', as: :getevent
   post '/quests/:quest_id/events/new_quest_event' => 'events#create'
+  
   resources :quests do
     resources :events
   end
