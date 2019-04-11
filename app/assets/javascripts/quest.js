@@ -22,6 +22,8 @@ function getQuests(questsCallback) {
         });
 
         console.log("Yarr, her' be quests:", quests);
+
+        // Closure:
         questsCallback(quests);
     });
 }
@@ -29,7 +31,7 @@ function getQuests(questsCallback) {
 // getQuest will execute when information regarding a single quest is desired
 function getQuest(questId, questCallback) {
     $.ajax({
-        url: '/api/quests',
+        url: '/api/quest' + questId,
         method: 'get',
         dataType: 'json'
     }).done(function(response){
@@ -38,6 +40,7 @@ function getQuest(questId, questCallback) {
         quest = new Quest(response.name, response.description, response.id);
 
         console.log("Here is the quest you were looking for:", quest);
+        // closure:
         questCallback(quest);
     });
 }
@@ -63,7 +66,7 @@ $(document).ready(function() {
     });
 });
 
-$("#added-event-submit").submit(function(e) {
+$("#event-add").submit(function(e) {
     e.preventDefault();
     let form = $(this);
     console.log(this);
@@ -97,9 +100,4 @@ function addQuestEvent(questId, questCallback) {
 // Needed for getQuests request //
 Quest.prototype.showQuestSummary = function() {
     return '<h4><a href= "/quests/'+this.id+'">'+this.name+'</a></h3>';
-}
-
-// used by addQuestEvents
-Quest.prototype.addNewEvent = function() {
-    // html addendum
 }

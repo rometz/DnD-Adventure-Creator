@@ -1,14 +1,8 @@
 <h3>Quest: <%= @quest.name %></h3>
 <h5>Description:</h5>
 <p><%= @quest.description %></p>
-<div class="container">
-    <% @events.each do |e| %>
-        <div class="d-inline-flex align-content-start flex-wrap" id="jsproto">
-            <ul>
-                <li>Event: <%= link_to "#{e.name}", quest_event_path(@quest.id, e.id) %></li>
-            </ul>
-        </div>
-    <% end %>
+
+<div class="container" id="owned-events">
 </div>
 
 <div id="event-form" data-quest-id="<%=@quest.id%>"></div>
@@ -17,19 +11,15 @@
     Add Event to <%= @quest.name %> 
 <% end %>
 
-<!--
-<p id="new-quest-event-button" data-url="/quests/<%=@quest.id%>/events/new_quest_event" data-params="<%= @quest.id %>"><%= link_to "Add an Event to '#{@quest.name}'", getevent_path(@quest, @event) %></p>
--->
-<!-- use an onClick JS function to render the layout within quests#show? questions... -->
-<!-- use render partial: "events/fields", locals: {quest: @quest} ????? -->
-<!-- use jQuery .load() ??? i'm thinking this one. -->
 
 <script type="text/javascript">
-    (function(quests) {
-        let appendQuest = '';
-        quests.forEach(function(quest) {
-            appendQuest += quest.showQuestSummary();
+
+    getEvents(<%=@id%>, events => {
+        let appendEvent = '';
+        events.forEach(function(event) {
+            appendEvent += event.showEventSummary();
         });
-        $('#quests').html(appendQuest);
+        $('#owned-events').html(appendEvent);
     });
+
 </script>

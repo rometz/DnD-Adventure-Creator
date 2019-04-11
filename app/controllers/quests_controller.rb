@@ -15,9 +15,6 @@ class QuestsController < ApplicationController
         Event.where("quest_id = #{@quest.id}").find_each do |e|
             @events << e
         end
-      #  byebug
-    #    render json: @quest
-    #    used together with undeveloped method mentioned in quest.js
     end
     
     def new
