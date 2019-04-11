@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
+* Two Taverns
+This application is designed to help smoothly create a table-top adventuring campaign. It features
+multiple means of creating and sorting to help the dungeon master.
 
 * Configuration
-
+```
+git clone git@github.com:alcesalces11331/Rollin_Metzger_RailsJS_Project.git
+```
 * Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
+```
+rake db:migrate
+```
 * Deployment instructions
-
-* ...
+Start a rails server:
+```
+rails s
+```
+**** Have Fun.

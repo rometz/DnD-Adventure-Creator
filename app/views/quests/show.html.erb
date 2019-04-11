@@ -13,7 +13,7 @@
 
 <div id="event-form" data-quest-id="<%=@quest.id%>"></div>
 <br>
-<%= button_to "Test", { method: :get,  form_class: "event-add", params: [@quest, @event], id: @quest.id }, "/quests/#{ @quest.id }/events/new_quest_event"  do %>
+<%= button_to "#{@quest.id}", { method: :get,  form_class: "event-add", params: [@quest, @event], id: @quest.id }, "/quests/#{ @quest.id }/events/new_quest_event"  do %>
     Add Event to <%= @quest.name %> 
 <% end %>
 
