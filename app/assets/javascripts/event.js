@@ -1,5 +1,5 @@
 class Event {
-    constructor(name, description, combat, social, search) {
+    constructor(name, description, combat, social, search, id, quest_id) {
         this.name = name;
         this.description = description;
         this.combat = combat;
@@ -36,6 +36,6 @@ function getEvents(quest_id, eventsCallback) {
 
 // used by getEvents()
 Event.prototype.showEventSummary = function() {
-    return '<h5><a href= "quests/'+this.quest_id+'/events">' +this.name+'</a></h3>';
+    return '<h5><a href= "quests/'+this.quest_id+'/events/'+this.id+'">' +this.name+'</a></h5>';
     // html addendum
 }
