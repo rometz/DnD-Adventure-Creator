@@ -6,4 +6,9 @@ class EventsApiController < ApplicationController
         render json: events
     end
 
+    def create
+        event = Event.create
+        render json: event, status: 201
+    end
+
 end

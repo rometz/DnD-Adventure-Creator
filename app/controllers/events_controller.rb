@@ -64,6 +64,18 @@ class EventsController < ApplicationController
         render layout: false
     end
 
+    def new_quest_event_post
+        @event = Event.new(events_params)
+        @quest = Quest.find_by(id: params[:quest_id].to_i)
+        @event.quest_id = @quest.id
+        @event.user_id = current_user.id
+        if @event.save
+            redirect_to quest_path(@quest)
+        else
+            render 'new'
+        end
+    end
+
     private
 
     def events_params

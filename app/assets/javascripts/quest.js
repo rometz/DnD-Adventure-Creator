@@ -51,32 +51,11 @@ $(document).ready(function() {
     $(".event-add").click(function(event) {
         event.preventDefault();
 
-        let $button = $(this);
-
-       // let $eventDiv = $('.event-div');
-        let url = $(this).data("url");
-        //console.log($eventDiv);
-        /*
-        $.get(url, function(response){
-            console.log('response: ', response);
-            $button.before(response);
-        });
-        */
         $('#event-form').load(`/quests/${questId}/events/new_quest_event #event-div`);       
     });
 });
 
-$("#event-add").submit(function(e) {
-    e.preventDefault();
-    let form = $(this);
-    console.log(this);
-    let url = form.attr('action');
-    $.ajax({
-        type: "POST",
-        url: url,
-        data: form.serialize()
-    });
-});
+
 
 // addQuestEvent
 function addQuestEvent(questId, questCallback) {

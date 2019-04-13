@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   patch '/api/quest/:id' => 'quests_api#update'
 
   get '/api/quest/:quest_id/events' => 'events_api#index'
+  post '/api/quest/:quest_id/events/:id' => 'events_api#create'
 end

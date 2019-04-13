@@ -1,8 +1,7 @@
 <div id="event-div">
     <%= form_for @event, url: { :action => "new_quest_event" } do |f| %>
-    <%#   <%= quest_form.fields_for :event do |f| %>
+
         <%= render 'events/fields', f: f %>
-    <%#   <% end %>
     
         <div id="added-event-submit">
             <%= f.submit %>

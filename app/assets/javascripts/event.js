@@ -9,13 +9,7 @@ class Event {
         this.quest_id = quest_id
     };
 }
-/*
-$.ajax({
-    url: `/api/quest/${quest_id}/events`,
-    method: 'get',
-    datatype: 'json'
-    */
-// getEvents() renders for the Quests has_many Events
+
 function getEvents(quest_id, eventsCallback) {
 
     let url = `/api/quest/${quest_id}/events`;
@@ -33,6 +27,28 @@ function getEvents(quest_id, eventsCallback) {
         eventsCallback(events);
     });
 }
+
+$(document).ready(function() {
+    let questId = $('#event-form').data("quest-id");
+    $("#added-event-submit").click(function(e) {
+        e.preventDefault();
+        let url = `/quests/${questId}/events`;
+        let form = $(this);
+        let formSerialized = form.serialize();
+        $.ajax({
+            url: url,
+            method: 'post',
+            data: formSerialized,
+            dataType: 'json'
+        }).done(function(response){
+            console.log('response: ', response);
+
+            event = new Event(response.name, response.description, response.combat, response.social, response.search, response.id, response.quest_id);
+
+            $('#owned-events').html(event);
+        });    
+    });
+})
 
 // used by getEvents()
 Event.prototype.showEventSummary = function() {
