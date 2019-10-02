@@ -1,3 +1,0 @@
-// no need for a constructor ...
-
-// js to add events to user#show page
