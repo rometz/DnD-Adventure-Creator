@@ -6,5 +6,5 @@ services:
     ports:
      - "27017:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: Rollongo
-      MONGO_INITDB_ROOT_PASSWORD: Rollongo
+      MONGO_INITDB_ROOT_USERNAME: rollongo
+      MONGO_INITDB_ROOT_PASSWORD: rollongo
