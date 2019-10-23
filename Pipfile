@@ -9,6 +9,7 @@ verify_ssl = true
 marshmallow = "*"
 pymongo = "*"
 pyjwt = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.6"
