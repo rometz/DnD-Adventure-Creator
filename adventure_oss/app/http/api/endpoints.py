@@ -36,3 +36,18 @@ def show(adventure_id):
         return json_response({'error': 'adventure not found'}, 404)
 
 
+@app.route("/adventure/<int:adventure_id>", methods=["PUT"])
+@login_required
+def update(adventure_id):
+    adventure_repo = AdventureSchema().load(json.loads(request.data))
+
+    if adventure_repo.errors:
+        return json_response({'error': adventure_repo.errors}, 422)
+
+    adventure_service = Adventure(g.user)
+    if adventure_service.update_adventure_with(adventure_id, adventure_repo):
+        return json_response(adventure_repo.data)
+    else:
+        return json_response({'error': 'adventure not found'}, 404)
+
+
