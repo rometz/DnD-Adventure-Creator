@@ -51,3 +51,13 @@ def update(adventure_id):
         return json_response({'error': 'adventure not found'}, 404)
 
 
+@app.route("/adventure/<int:adventure_id>", methods=["DELETE"])
+@login_required
+def delete(adventure_id):
+    adventure_service = Adventure(g.user)
+    if adventure_service.delete_adventure_with(adventure_id):
+        return json_response({})
+    else:
+        return json_response({'error': 'adventure not found'}, 404)
+
+
