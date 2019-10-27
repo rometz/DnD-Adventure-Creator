@@ -25,3 +25,14 @@ def create():
     return json_response(adv)
 
 
+@app.route("/adventure/<int:adventure_id>", methods=["GET"])
+@login_required
+def show(adventure_id):
+    adv = Adventure(g.user).find_adventure(adventure_id)
+
+    if adv:
+        return json_response(adv)
+    else:
+        return json_response({'error': 'adventure not found'}, 404)
+
+
