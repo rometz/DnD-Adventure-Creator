@@ -61,3 +61,5 @@ def delete(adventure_id):
         return json_response({'error': 'adventure not found'}, 404)
 
 
+def json(payload, status=200):
+    return (json.dumps(payload), status, {'content-type': 'application/json'})
